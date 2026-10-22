@@ -134,10 +134,10 @@ def set_body_style(doc: Document, font_size: float = 11.0, line_spacing: float =
     style.paragraph_format.space_after = Pt(5)
     style.paragraph_format.first_line_indent = Cm(0.74)
     for section in doc.sections:
-        section.top_margin = Cm(2.0)
-        section.bottom_margin = Cm(1.8)
-        section.left_margin = Cm(2.15)
-        section.right_margin = Cm(2.0)
+        section.top_margin = Cm(2.3)
+        section.bottom_margin = Cm(2.2)
+        section.left_margin = Cm(2.4)
+        section.right_margin = Cm(2.3)
 
     if "Heading 4" not in [s.name for s in doc.styles]:
         h4 = doc.styles.add_style("Heading 4", WD_STYLE_TYPE.PARAGRAPH)
@@ -517,6 +517,24 @@ def add_response_matrix(doc: Document, requirements: list[dict]) -> None:
             p.paragraph_format.line_spacing = 1.0
             r = p.add_run(value)
             set_run_font(r, 6.5)
+
+    doc.add_paragraph("技术响应结论", style="Heading 2")
+    add_paragraph(
+        doc,
+        "本方案已将招标要求落实到总体架构、平台软件、专网数字集群、公网对讲、IP电话利旧、视频与广播融合、GIS调度、主要设备、实施、测试、培训和服务等完整建设链条。逐条响应矩阵用于建立要求与方案之间的索引关系，真正的技术响应由前述连续正文、最终配置、实施记录和测试证据共同构成，不以表格中的“满足”二字代替工程实现。",
+    )
+    add_paragraph(
+        doc,
+        "进入深化设计后，项目团队将以本矩阵为需求基线，为每一项条款补充设计对象、配置项、责任单位、测试用例和证据编号。现场条件、第三方接口或当地合规要求引起设计调整时，调整结果必须保持或提高招标指标，并通过正式评审和变更流程更新方案、清单、测试及交付资料，确保投标承诺能够连续传递到竣工验收。",
+    )
+    add_paragraph(
+        doc,
+        "对于AI降噪、智能对话、远程协助、录音录像自动报告、全流程安全审计、统一网管和终端“四自动”等增强能力，方案始终以生产通信可靠性为前提。智能能力可旁路、结果可复核、数据可追溯、故障可降级，任何模型或自动化流程都不会取代专网核心语音、现场安全制度和授权人员的最终判断。",
+    )
+    add_paragraph(
+        doc,
+        "通过统一的需求、设计、配置、测试和证据管理，本项目最终交付的不只是能够演示的功能集合，而是一套在园区复杂工业环境中可长期运行、可扩展、可维护、可审计的一体化AI智能融合调度指挥系统。",
+    )
 
 
 def main() -> None:
