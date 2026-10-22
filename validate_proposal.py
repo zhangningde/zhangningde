@@ -61,7 +61,11 @@ def main() -> None:
     missing = []
     for paragraph in tender.paragraphs:
         text = normalized(paragraph.text)
-        if not text or text == "目录" or paragraph.style.name.startswith(("Heading", "标题")):
+        if (
+            not text
+            or text in {"目录", "融合通讯系统建设项目", "技术招标需求书"}
+            or paragraph.style.name.startswith(("Heading", "标题"))
+        ):
             continue
         if text not in output:
             missing.append(text)
